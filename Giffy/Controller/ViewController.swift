@@ -27,7 +27,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
-                        process(data)
+                        self.process(data)
                     case .error(let error):
                         self.displayError(error)
                     }
