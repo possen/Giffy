@@ -8,18 +8,43 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
 
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var search: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        search.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.text = searchText
+        
+        print("query", searchText)
+        Query().query(query: searchText).send { (result) in
+            print(result)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    // note these hard unwraps quick and dirty.
+                    let d = data as! [String: Any]
+                    let dict = d["data"] as! [[String: Any]]
+                    let images = dict[0]["images"] as! [String: Any]
+                    let original = images["original"] as! [String: Any]
+                    let url = original["url"] as! String
+                    print(url)
+                    self.image.loadImageAtURL(URL(string:url)!)
+                case .error(let error):
+                    let alert = UIAlertController.init(title: "NetworkError", message: "error \(error)", preferredStyle: .actionSheet)
+                    alert.show(self, sender: nil)
+                }
+                    
+            }
+        }
     }
-
-
+    
+    
 }
 
