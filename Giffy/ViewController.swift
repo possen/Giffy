@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var webView: UIWebView!
+    
     @IBOutlet weak var search: UISearchBar!
     
     override func viewDidLoad() {
@@ -35,16 +38,14 @@ class ViewController: UIViewController, UISearchBarDelegate {
                     let original = images["original"] as! [String: Any]
                     let url = original["url"] as! String
                     print(url)
-                    self.image.loadImageAtURL(URL(string:url)!)
+                    self.webView.loadRequest(URLRequest(url: URL(string: url)!))
+//                    self.image.loadImageAtURL(URL(string:url)!)
                 case .error(let error):
                     let alert = UIAlertController.init(title: "NetworkError", message: "error \(error)", preferredStyle: .actionSheet)
                     alert.show(self, sender: nil)
                 }
-                    
             }
         }
     }
-    
-    
 }
 
