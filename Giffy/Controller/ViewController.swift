@@ -9,15 +9,6 @@
 import UIKit
 import WebKit
 
-//let d = data as! [String: Any]
-//let dict = d["data"] as! [[String: Any]]
-//let images = dict[0]["images"] as! [String: Any]
-//let original = images["original"] as! [String: Any]
-//let url = original["url"] as! String
-//print(url)
-
-
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
