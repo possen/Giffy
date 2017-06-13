@@ -13,7 +13,7 @@ import Foundation
 
 enum CompletionData {
     case error(NSError)
-    case success(AnyObject)
+    case success(Data)
 }
 
 class RestNetworkRequest {
@@ -39,12 +39,7 @@ class RestNetworkRequest {
                     completion(CompletionData.error(error! as NSError))
                     return
                 }
-                let (result, error) = self.processResponseData(data)
-                if let error = error {
-                    completion(CompletionData.error(error))
-                } else {
-                    completion(CompletionData.success(result!))
-                }
+                completion(CompletionData.success(data))
             }
             task.resume()
         }
@@ -66,20 +61,4 @@ class RestNetworkRequest {
             print("network response error \(error)")
         }
     }
-
-    fileprivate func parseJsonData(_ data : Data) -> (AnyObject?, NSError?) {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [String : AnyObject]
-//            print(json)
-            return (json as AnyObject?, nil)
-        } catch let error as NSError {
-            print("error serializing JSON: \(error)")
-            return (nil, error)
-        }
-    }
-    
-    fileprivate func processResponseData(_ data : Data) -> (AnyObject?, NSError?) {
-        return parseJsonData(data)
-    }
-
 }

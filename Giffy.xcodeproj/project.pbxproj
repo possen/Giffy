@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D50985F41EEF8B3200793835 /* AutoCompleteAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */; };
 		D50985F61EEF946900793835 /* SearchAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50985F51EEF946800793835 /* SearchAdaptor.swift */; };
+		D534F6A31EEFD8460076A442 /* GiffyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F6A21EEFD8450076A442 /* GiffyModel.swift */; };
 		D5998C8C1EEF690400BC95F2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */; };
 		D5998C921EEF691300BC95F2 /* RestNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */; };
 		D5998C931EEF691300BC95F2 /* RestRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteAdaptor.swift; sourceTree = "<group>"; };
 		D50985F51EEF946800793835 /* SearchAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdaptor.swift; sourceTree = "<group>"; };
+		D534F6A21EEFD8450076A442 /* GiffyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiffyModel.swift; sourceTree = "<group>"; };
 		D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRequestManager.swift; sourceTree = "<group>"; };
 		D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -49,6 +51,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D534F6A41EEFD9820076A442 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5B7429F1EEF604D005BCE79 /* Query.swift */,
+				D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */,
+				D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */,
+				D534F6A21EEFD8450076A442 /* GiffyModel.swift */,
+				D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D534F6A51EEFD9A10076A442 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */,
+				D50985F51EEF946800793835 /* SearchAdaptor.swift */,
+				D5B742891EEF5F55005BCE79 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D534F6A61EEFD9C40076A442 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D5B7427B1EEF5F55005BCE79 = {
 			isa = PBXGroup;
 			children = (
@@ -68,15 +100,10 @@
 		D5B742861EEF5F55005BCE79 /* Giffy */ = {
 			isa = PBXGroup;
 			children = (
-				D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */,
-				D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */,
-				D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */,
-				D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */,
+				D534F6A41EEFD9820076A442 /* Model */,
+				D534F6A61EEFD9C40076A442 /* View */,
 				D5B742871EEF5F55005BCE79 /* AppDelegate.swift */,
-				D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */,
-				D50985F51EEF946800793835 /* SearchAdaptor.swift */,
-				D5B742891EEF5F55005BCE79 /* ViewController.swift */,
-				D5B7429F1EEF604D005BCE79 /* Query.swift */,
+				D534F6A51EEFD9A10076A442 /* Controller */,
 				D5B7428B1EEF5F55005BCE79 /* Main.storyboard */,
 				D5B7428E1EEF5F55005BCE79 /* Assets.xcassets */,
 				D5B742901EEF5F55005BCE79 /* LaunchScreen.storyboard */,
@@ -160,6 +187,7 @@
 				D5998C921EEF691300BC95F2 /* RestNetworkRequest.swift in Sources */,
 				D50985F41EEF8B3200793835 /* AutoCompleteAdaptor.swift in Sources */,
 				D5B7428A1EEF5F55005BCE79 /* ViewController.swift in Sources */,
+				D534F6A31EEFD8460076A442 /* GiffyModel.swift in Sources */,
 				D50985F61EEF946900793835 /* SearchAdaptor.swift in Sources */,
 				D5998C941EEF691300BC95F2 /* UIImageView+Extension.swift in Sources */,
 				D5998C8C1EEF690400BC95F2 /* NetworkRequest.swift in Sources */,
