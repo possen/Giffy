@@ -13,7 +13,9 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
     var autoCompleteAdaptor : AutoCompleteAdaptor! = nil
     var completion : (() -> Void)? = nil
     
-    convenience init(searchView: UISearchBar, parentView: UIView, completion: @escaping () -> Void ) {
+    convenience init(searchView: UISearchBar,
+                     parentView: UIView,
+                     completion: @escaping () -> Void ) {
         self.init()
         
         self.completion = completion
@@ -22,6 +24,7 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
                                 y: searchView.frame.size.height,
                                 width: parentView.frame.size.width,
                                 height: parentView.frame.size.height)
+        
         autoCompleteTableView = UITableView(frame: tableFrame, style:.plain)
         
         autoCompleteAdaptor = AutoCompleteAdaptor(tableView: autoCompleteTableView) { text in
@@ -36,19 +39,24 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         self.completion?()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        queryChanged(searchBar: searchBar, searchText: searchText)
+        self.queryChanged(searchBar: searchBar, searchText: searchText)
     }
     
     func queryChanged(searchBar: UISearchBar, searchText: String) {
-        searchBar.text = searchText
-        print("query", searchText)
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: DispatchTime.now() + .milliseconds(100)) {
-            self.autoCompleteAdaptor.changed(text:searchText)
-            self.completion?()
+        DispatchQueue.main.async {
+            searchBar.text = searchText
+            print("query", searchText)
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: DispatchTime.now() + .milliseconds(100)) {
+                self.autoCompleteAdaptor.changed(text:searchText)
+                DispatchQueue.main.async {
+                    self.completion?()
+                }
+            }
         }
     }
 }

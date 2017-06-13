@@ -23,7 +23,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         searchAdaptor = SearchAdaptor(searchView: search, parentView: view) {
             self.query.query(query: self.search?.text ?? "").send { (result) in
-                print(result)
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
@@ -39,8 +38,13 @@ class ViewController: UIViewController {
                         self.webView.loadRequest(URLRequest(url: URL(string: url)!))
                     //                    self.image.loadImageAtURL(URL(string:url)!)
                     case .error(let error):
-                        let alert = UIAlertController.init(title: "NetworkError", message: "error \(error)", preferredStyle: .actionSheet)
-                        alert.show(self, sender: nil)
+                        print(error)
+                        let alert = UIAlertController(title: "NetworkError", message: "error \(error)", preferredStyle: .actionSheet)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert.dismiss(animated: true, completion: {})
+                        })
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: {})
                     }
                 }
             }
