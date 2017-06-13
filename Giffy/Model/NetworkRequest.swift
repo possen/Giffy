@@ -11,11 +11,9 @@ import Foundation
 
 class NetworkRequest : RestNetworkRequest {
     init(query : String?) {
-        
-        let query = "q=\(query ?? "")"
-        let parameters =   ["q" : query,
-                                         "api_key" : "dc6zaTOxFJmzC",
-                                         "limit": "1"]
+        let parameters =   ["q" : query ?? "",
+                            "api_key" : "dc6zaTOxFJmzC",
+                            "limit": "1"]
         
         super.init(command: "v1/gifs/search", parameters:parameters)
     }

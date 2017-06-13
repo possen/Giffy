@@ -27,15 +27,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
-                        let decoder = JSONDecoder()
-                        do {
-                            let giffyResult = try decoder.decode(GiffyData.self, from: data)
-                            let url = giffyResult.data[0].images.original.url
-                            self.webView.loadRequest(URLRequest(url: URL(string: url)!))
-                            //                    self.image.loadImageAtURL(URL(string:url)!)
-                        } catch let error {
-                            self.displayError(error)
-                        }
+                        process(data)
                     case .error(let error):
                         self.displayError(error)
                     }
@@ -43,6 +35,23 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    fileprivate func process(_ data: (Data)) {
+        let decoder = JSONDecoder()
+        do {
+            let giffyResult = try decoder.decode(GiffyData.self, from: data)
+            guard giffyResult.data.count >= 1 else {
+                return
+            }
+            let url = giffyResult.data[0].images.original.url
+            self.webView.loadRequest(URLRequest(url: URL(string: url)!))
+            
+            //                    self.image.loadImageAtURL(URL(string:url)!)
+        } catch let error {
+            self.displayError(error)
+        }
+    }
+    
     
     fileprivate func displayError(_ error: (Error)) {
         print(error)
