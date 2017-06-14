@@ -13,7 +13,7 @@ class NetworkRequest : RestNetworkRequest {
     init(query : String?) {
         let parameters =   ["q" : query ?? "",
                             "api_key" : "dc6zaTOxFJmzC",
-                            "limit": "1"]
+                            "limit": "50"]
         
         super.init(command: "v1/gifs/search", parameters:parameters)
     }

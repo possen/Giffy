@@ -11,17 +11,42 @@ import WebKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var search: UISearchBar!
+    
     var searchAdaptor : SearchAdaptor? = nil
     let query = Query()
+    var tableViewAdaptor : TableViewAdaptor! = nil
+    var tableViewAdaptorSection : TableViewAdaptorSection<GiffyTableViewCell, GiffyData.Record>! = nil
     
     // the role of this view controller is largley to tie things together. They should be quite minimal,
     // to avoid mega view controller.
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableViewAdaptorSection = TableViewAdaptorSection<GiffyTableViewCell, GiffyData.Record> (
+            cellReuseIdentifier: "GiffyCell",
+            sectionTitle: "",
+            height: 30,
+            items: [],
+            select: { (model, index) in
+                self.display(model)
+            })
+        { cell, model in
+            cell.viewData = GiffyTableViewCell.ViewData(model: model)
+        }
+        
+        tableViewAdaptor = TableViewAdaptor (
+            tableView: tableView,
+            sections: [tableViewAdaptorSection],
+            didChangeHandler: { [unowned self] in
+                self.tableView.reloadData()
+            }
+        )
+        
         searchAdaptor = SearchAdaptor(searchView: search, parentView: view) {
             self.query.query(query: self.search?.text ?? "").send { (result) in
                 DispatchQueue.main.async {
@@ -36,18 +61,26 @@ class ViewController: UIViewController {
         }
     }
     
+    fileprivate func display(_ data: GiffyData.Record) {
+        if let url = URL(string: data.images.original.url) {
+            self.webView.loadRequest(URLRequest(url: url))
+        }
+    }
+    
     fileprivate func process(_ data: (Data)) {
-        let decoder = JSONDecoder()
-        do {
-            let giffyResult = try decoder.decode(GiffyData.self, from: data)
-            guard giffyResult.data.count >= 1 else {
+        let result = GiffyData.process(data)
+        switch result {
+        case .success(let gifData):
+            guard gifData.data.count >= 1 else {
                 return
             }
-            let url = giffyResult.data[0].images.original.url
-            self.webView.loadRequest(URLRequest(url: URL(string: url)!))
             
-            //                    self.image.loadImageAtURL(URL(string:url)!)
-        } catch let error {
+            // display first result right away
+            display(gifData.data[0])
+            
+            tableViewAdaptorSection.items = gifData.data
+            tableViewAdaptor.update()
+        case .error(let error):
             self.displayError(error)
         }
     }

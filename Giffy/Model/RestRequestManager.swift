@@ -11,7 +11,7 @@
 import Foundation
 
 class RestRequestManager {
-    func sendRequest(_ request : RestNetworkRequest, completion: @escaping (_ completionData : CompletionData) -> Void ) {
+    func sendRequest(_ request : RestNetworkRequest, completion: @escaping (_ completionData : CompletionData<Data>) -> Void ) {
         request.send(completion)
     }
 }

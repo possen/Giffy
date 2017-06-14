@@ -26,18 +26,33 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </searchBar>
                             <webView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="tXf-Iy-dfT">
-                                <rect key="frame" x="0.0" y="212" width="375" height="243"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="243"/>
                                 <color key="backgroundColor" red="0.46666666870000001" green="0.76470589639999997" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="243" id="YZ1-LC-Dnn"/>
                                     <constraint firstAttribute="width" secondItem="tXf-Iy-dfT" secondAttribute="height" multiplier="15:8" constant="-80.625" id="ipS-oO-aMR"/>
                                 </constraints>
                             </webView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bac-lm-zHD">
+                                <rect key="frame" x="-7" y="300" width="382" height="359"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GiffyCell" id="ss0-6t-0Az" customClass="GiffyTableViewCell" customModule="Giffy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="382" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ss0-6t-0Az" id="1x3-1J-iMk">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.9380337272" green="0.98559801189999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="tXf-Iy-dfT" secondAttribute="height" multiplier="375:128" constant="-336.9140625" id="5rM-bT-PLZ"/>
-                            <constraint firstItem="tXf-Iy-dfT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cCJ-x5-yYS"/>
+                            <constraint firstItem="tXf-Iy-dfT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-156" id="cCJ-x5-yYS"/>
                             <constraint firstItem="xsA-Bw-opw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lgD-TR-21j"/>
                             <constraint firstAttribute="trailing" secondItem="xsA-Bw-opw" secondAttribute="trailing" id="uSe-rf-1Em"/>
                             <constraint firstItem="xsA-Bw-opw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vks-yX-eDK"/>
@@ -46,6 +61,7 @@
                     </view>
                     <connections>
                         <outlet property="search" destination="xsA-Bw-opw" id="u2y-1D-Hxr"/>
+                        <outlet property="tableView" destination="bac-lm-zHD" id="ecC-iI-IdE"/>
                         <outlet property="webView" destination="tXf-Iy-dfT" id="65n-MX-qLQ"/>
                     </connections>
                 </viewController>

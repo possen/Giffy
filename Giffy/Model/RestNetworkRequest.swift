@@ -11,9 +11,9 @@
 
 import Foundation
 
-enum CompletionData {
-    case error(NSError)
-    case success(Data)
+enum CompletionData<DataType> {
+    case error(Error)
+    case success(DataType)
 }
 
 class RestNetworkRequest {
@@ -26,7 +26,7 @@ class RestNetworkRequest {
         self.parameters = parameters
     }
 
-    func send(_ completion: @escaping (_ completion : CompletionData) -> Void) {
+    func send(_ completion: @escaping (_ completion : CompletionData<Data>) -> Void) {
         let urlData = command + urlQuery + paramString
         let url = URL(string: urlData, relativeTo: baseUrl!)
         if let url = url {

@@ -10,6 +10,8 @@
 		D50985F41EEF8B3200793835 /* AutoCompleteAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */; };
 		D50985F61EEF946900793835 /* SearchAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50985F51EEF946800793835 /* SearchAdaptor.swift */; };
 		D534F6A31EEFD8460076A442 /* GiffyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F6A21EEFD8450076A442 /* GiffyModel.swift */; };
+		D534F6A91EF047F50076A442 /* TableViewAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F6A81EF047F40076A442 /* TableViewAdaptor.swift */; };
+		D566E82F1EF0737E005FDAB8 /* GiffyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566E82E1EF0737E005FDAB8 /* GiffyTableViewCell.swift */; };
 		D5998C8C1EEF690400BC95F2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */; };
 		D5998C921EEF691300BC95F2 /* RestNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */; };
 		D5998C931EEF691300BC95F2 /* RestRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */; };
@@ -26,6 +28,8 @@
 		D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteAdaptor.swift; sourceTree = "<group>"; };
 		D50985F51EEF946800793835 /* SearchAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdaptor.swift; sourceTree = "<group>"; };
 		D534F6A21EEFD8450076A442 /* GiffyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiffyModel.swift; sourceTree = "<group>"; };
+		D534F6A81EF047F40076A442 /* TableViewAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdaptor.swift; sourceTree = "<group>"; };
+		D566E82E1EF0737E005FDAB8 /* GiffyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiffyTableViewCell.swift; sourceTree = "<group>"; };
 		D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRequestManager.swift; sourceTree = "<group>"; };
 		D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 				D50985F31EEF8B3200793835 /* AutoCompleteAdaptor.swift */,
 				D50985F51EEF946800793835 /* SearchAdaptor.swift */,
 				D5B742891EEF5F55005BCE79 /* ViewController.swift */,
+				D534F6A81EF047F40076A442 /* TableViewAdaptor.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -77,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */,
+				D566E82E1EF0737E005FDAB8 /* GiffyTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,7 +199,9 @@
 				D5998C8C1EEF690400BC95F2 /* NetworkRequest.swift in Sources */,
 				D5998C931EEF691300BC95F2 /* RestRequestManager.swift in Sources */,
 				D5B742881EEF5F55005BCE79 /* AppDelegate.swift in Sources */,
+				D534F6A91EF047F50076A442 /* TableViewAdaptor.swift in Sources */,
 				D5B742A01EEF604D005BCE79 /* Query.swift in Sources */,
+				D566E82F1EF0737E005FDAB8 /* GiffyTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UVHFXZWG47;
 				INFOPLIST_FILE = Giffy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synthus.Giffy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -343,6 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UVHFXZWG47;
 				INFOPLIST_FILE = Giffy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synthus.Giffy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
