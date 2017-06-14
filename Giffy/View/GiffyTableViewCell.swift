@@ -15,6 +15,7 @@ class GiffyTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        imageView?.contentMode = .scaleAspectFill
     }
     
     override init(style: UITableViewCellStyle,  reuseIdentifier: String?) {
@@ -63,7 +64,6 @@ class GiffyTableViewCell: UITableViewCell {
             guard let viewData = viewData else {
                 return
             }
-            imageView?.contentMode = .scaleAspectFill
             setupTitle(viewData)
             setupImageView(viewData)
         }
