@@ -50,7 +50,10 @@ class GiffyTableViewCell: UITableViewCell {
             // if there is no name use the organization name, if both are
             // present set the detail on the cell.
             let title = viewData.title.trimmingCharacters(in: .whitespaces)
-            textLabel!.text = title != "" ? title : ""
+            var parts = title.split(separator: "-")
+            parts.removeLast()
+            let cleanTitle = String(parts.joined(separator: " "))
+            textLabel!.text = cleanTitle.count == 0 ? "no title" : cleanTitle
             imageView?.contentMode = .scaleAspectFill
             if let imageURL = viewData.imageURL, let imageView = imageView {
                 imageView.loadImageAtURL(imageURL)

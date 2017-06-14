@@ -68,23 +68,30 @@ class ViewController: UIViewController {
     }
     
     fileprivate func process(_ data: (Data)) {
-        let result = GiffyData.process(data)
-        switch result {
-        case .success(let gifData):
-            guard gifData.data.count >= 1 else {
-                return
-            }
-            
-            // display first result right away
-            display(gifData.data[0])
-            
-            tableViewAdaptorSection.items = gifData.data
-            tableViewAdaptor.update()
-        case .error(let error):
-            self.displayError(error)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.processInBackground(data)
         }
     }
     
+    fileprivate func processInBackground(_ data: (Data)) {
+        let result = GiffyData.process(data)
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let gifData):
+                guard gifData.data.count >= 1 else {
+                    return
+                }
+                
+                // display first result right away
+                self.display(gifData.data[0])
+                
+                self.tableViewAdaptorSection.items = gifData.data
+                self.tableViewAdaptor.update()
+            case .error(let error):
+                self.displayError(error)
+            }
+        }
+    }
     
     fileprivate func displayError(_ error: (Error)) {
         print(error)
@@ -95,6 +102,5 @@ class ViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: {})
     }
-    
 }
 
