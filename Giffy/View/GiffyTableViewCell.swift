@@ -42,24 +42,30 @@ class GiffyTableViewCell: UITableViewCell {
         let imageURL : URL?
     }
     
+    fileprivate func setupTitle(_ viewData: GiffyTableViewCell.ViewData) {
+        let title = viewData.title.trimmingCharacters(in: .whitespaces)
+        var parts = title.split(separator: "-")
+        parts.removeLast()
+        let cleanTitle = String(parts.joined(separator: " "))
+        textLabel!.text = cleanTitle.count == 0 ? "no title" : cleanTitle
+    }
+    
+    fileprivate func setupImageView(_ viewData: GiffyTableViewCell.ViewData) {
+        if let imageURL = viewData.imageURL, let imageView = imageView {
+            imageView.loadImageAtURL(imageURL)
+        } else {
+            imageView?.image = UIImage(named: "Placeholder") ?? UIImage()
+        }
+    }
+    
     var viewData: ViewData? {
         didSet {
             guard let viewData = viewData else {
                 return
             }
-            // if there is no name use the organization name, if both are
-            // present set the detail on the cell.
-            let title = viewData.title.trimmingCharacters(in: .whitespaces)
-            var parts = title.split(separator: "-")
-            parts.removeLast()
-            let cleanTitle = String(parts.joined(separator: " "))
-            textLabel!.text = cleanTitle.count == 0 ? "no title" : cleanTitle
             imageView?.contentMode = .scaleAspectFill
-            if let imageURL = viewData.imageURL, let imageView = imageView {
-                imageView.loadImageAtURL(imageURL)
-            } else {
-                imageView?.image = UIImage(named: "Placeholder") ?? UIImage()
-            }
+            setupTitle(viewData)
+            setupImageView(viewData)
         }
     }
 }
