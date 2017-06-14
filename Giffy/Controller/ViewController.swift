@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         )
         
         searchAdaptor = SearchAdaptor(searchView: search, parentView: view) {
-            self.query.query(query: self.search?.text ?? "").send { (result) in
+            self.query.query(query: self.search?.text ?? "", offset: 0).send { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):

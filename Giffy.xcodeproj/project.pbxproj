@@ -12,9 +12,7 @@
 		D534F6A31EEFD8460076A442 /* GiffyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F6A21EEFD8450076A442 /* GiffyModel.swift */; };
 		D534F6A91EF047F50076A442 /* TableViewAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534F6A81EF047F40076A442 /* TableViewAdaptor.swift */; };
 		D566E82F1EF0737E005FDAB8 /* GiffyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566E82E1EF0737E005FDAB8 /* GiffyTableViewCell.swift */; };
-		D5998C8C1EEF690400BC95F2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */; };
-		D5998C921EEF691300BC95F2 /* RestNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */; };
-		D5998C931EEF691300BC95F2 /* RestRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */; };
+		D5998C921EEF691300BC95F2 /* RESTNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C881EEF681B00BC95F2 /* RESTNetworkRequest.swift */; };
 		D5998C941EEF691300BC95F2 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */; };
 		D5B742881EEF5F55005BCE79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B742871EEF5F55005BCE79 /* AppDelegate.swift */; };
 		D5B7428A1EEF5F55005BCE79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B742891EEF5F55005BCE79 /* ViewController.swift */; };
@@ -31,9 +29,7 @@
 		D534F6A81EF047F40076A442 /* TableViewAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdaptor.swift; sourceTree = "<group>"; };
 		D566E82E1EF0737E005FDAB8 /* GiffyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiffyTableViewCell.swift; sourceTree = "<group>"; };
 		D5998C831EEF681B00BC95F2 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
-		D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRequestManager.swift; sourceTree = "<group>"; };
-		D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
-		D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestNetworkRequest.swift; sourceTree = "<group>"; };
+		D5998C881EEF681B00BC95F2 /* RESTNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTNetworkRequest.swift; sourceTree = "<group>"; };
 		D5B742841EEF5F55005BCE79 /* Giffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Giffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B742871EEF5F55005BCE79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5B742891EEF5F55005BCE79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,10 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				D5B7429F1EEF604D005BCE79 /* Query.swift */,
-				D5998C861EEF681B00BC95F2 /* NetworkRequest.swift */,
-				D5998C881EEF681B00BC95F2 /* RestNetworkRequest.swift */,
+				D5998C881EEF681B00BC95F2 /* RESTNetworkRequest.swift */,
 				D534F6A21EEFD8450076A442 /* GiffyModel.swift */,
-				D5998C851EEF681B00BC95F2 /* RestRequestManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,14 +184,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5998C921EEF691300BC95F2 /* RestNetworkRequest.swift in Sources */,
+				D5998C921EEF691300BC95F2 /* RESTNetworkRequest.swift in Sources */,
 				D50985F41EEF8B3200793835 /* AutoCompleteAdaptor.swift in Sources */,
 				D5B7428A1EEF5F55005BCE79 /* ViewController.swift in Sources */,
 				D534F6A31EEFD8460076A442 /* GiffyModel.swift in Sources */,
 				D50985F61EEF946900793835 /* SearchAdaptor.swift in Sources */,
 				D5998C941EEF691300BC95F2 /* UIImageView+Extension.swift in Sources */,
-				D5998C8C1EEF690400BC95F2 /* NetworkRequest.swift in Sources */,
-				D5998C931EEF691300BC95F2 /* RestRequestManager.swift in Sources */,
 				D5B742881EEF5F55005BCE79 /* AppDelegate.swift in Sources */,
 				D534F6A91EF047F50076A442 /* TableViewAdaptor.swift in Sources */,
 				D5B742A01EEF604D005BCE79 /* Query.swift in Sources */,

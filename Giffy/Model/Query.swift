@@ -9,9 +9,12 @@
 import Foundation
 
 class Query {
-    let request = RestRequestManager()
-
-    func query(query: String) -> NetworkRequest {
-       return  NetworkRequest(query: query)
+    func query(query: String, offset: Int) -> RESTNetworkRequest {
+        let parameters =   ["q" : query,
+                            "api_key" : "dc6zaTOxFJmzC",
+                            "limit": "50",
+                            "offset": "\(offset)"]
+        
+        return  RESTNetworkRequest(command: "v1/gifs/search", parameters: parameters)
     }
 }
