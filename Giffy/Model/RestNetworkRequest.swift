@@ -16,7 +16,7 @@ enum CompletionData<DataType> {
     case success(DataType)
 }
 
-class RestNetworkRequest {
+class RESTNetworkRequest {
     fileprivate let baseUrl = URL(string: "http://api.giphy.com")
     fileprivate let command : String
     fileprivate var parameters : [String : String] = [:]
