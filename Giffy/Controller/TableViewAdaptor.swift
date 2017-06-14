@@ -55,7 +55,7 @@ class TableViewAdaptorSection<Cell, Model> : TableSectionAdaptor {
 }
 
 
-class TableViewAdaptor: NSObject, UITableViewDataSource, UITableViewDelegate, TableViewDataManagerDelegate {
+class TableViewAdaptor: NSObject, TableViewDataManagerDelegate {
     private let tableView: UITableView
     private let didChangeHandler: () -> Void
     let sections : [TableSectionAdaptor]
@@ -70,6 +70,15 @@ class TableViewAdaptor: NSObject, UITableViewDataSource, UITableViewDelegate, Ta
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+    func update() {
+        DispatchQueue.main.async {
+            self.didChangeHandler()
+        }
+    }
+}
+
+extension TableViewAdaptor : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -87,9 +96,12 @@ class TableViewAdaptor: NSObject, UITableViewDataSource, UITableViewDelegate, Ta
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier:section.cellReuseIdentifier, for: indexPath)
-        section.configure(cell: cell, index: indexPath.row) // if this line fails, check that IB cellType is correct. 
+        section.configure(cell: cell, index: indexPath.row) // if this line fails, check that IB cellType is correct.
         return cell
     }
+}
+
+extension TableViewAdaptor : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sections[section].itemCount != 0 ? 20 : 0.01
@@ -106,11 +118,6 @@ class TableViewAdaptor: NSObject, UITableViewDataSource, UITableViewDelegate, Ta
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sections[indexPath.section].select(index: indexPath.row)
     }
-    
-    func update() {
-        DispatchQueue.main.async {
-            self.didChangeHandler()
-        }
-    }
 }
+
 

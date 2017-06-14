@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchAdaptor : NSObject, UISearchBarDelegate {
+class SearchAdaptor : NSObject {
     var autoCompleteTableView : UITableView! = nil
     var autoCompleteAdaptor : AutoCompleteAdaptor! = nil
     var completion : (() -> Void)? = nil
@@ -39,22 +39,9 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
         parentView.addSubview(autoCompleteTableView)
     }
     
-    fileprivate func dismissMenu() {
+    private func dismissMenu() {
         autoCompleteAdaptor.showControl = false
         autoCompleteAdaptor.update()
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        dismissMenu()
-        self.completion?()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.queryChanged(searchBar: searchBar, searchText: searchText)
     }
     
     func queryChanged(searchBar: UISearchBar, searchText: String) {
@@ -68,6 +55,21 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
                 }
             }
         }
+    }
+}
+
+extension SearchAdaptor : UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissMenu()
+        self.completion?()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.queryChanged(searchBar: searchBar, searchText: searchText)
     }
 }
 

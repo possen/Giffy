@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AutoCompleteAdaptor : NSObject, UITableViewDelegate, UITableViewDataSource {
+class AutoCompleteAdaptor : NSObject {
     private var tableView : UITableView! = nil
     private var select : ((String) -> Void)? = nil
     var showControl = false
@@ -41,28 +41,6 @@ class AutoCompleteAdaptor : NSObject, UITableViewDelegate, UITableViewDataSource
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autoCompleteFiltered.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = autoCompleteFiltered[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        select?(autoCompleteFiltered[indexPath.row])
-        showControl = false
-        DispatchQueue.main.async {
-            self.update()
-        }
-    }
-    
     func changed(text: String) {
         autoCompleteFiltered = autoCompleteData.filter({ (item) -> Bool in
             return item.hasPrefix(text.lowercased())
@@ -81,5 +59,31 @@ class AutoCompleteAdaptor : NSObject, UITableViewDelegate, UITableViewDataSource
     
     func update() {
         self.tableView.isHidden = !self.showControl
+    }
+}
+
+extension AutoCompleteAdaptor : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        select?(autoCompleteFiltered[indexPath.row])
+        showControl = false
+        DispatchQueue.main.async {
+            self.update()
+        }
+    }
+}
+
+extension AutoCompleteAdaptor : UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return autoCompleteFiltered.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = autoCompleteFiltered[indexPath.row]
+        return cell
     }
 }
