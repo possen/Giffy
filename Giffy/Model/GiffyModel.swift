@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Swift 4 decodable is quite nice.
+
 struct GiffyData: Decodable {
     struct Record: Decodable {
         struct Original : Decodable {
@@ -53,5 +55,4 @@ struct GiffyData: Decodable {
             return CompletionData.error(error)
         }
     }
-    
 }

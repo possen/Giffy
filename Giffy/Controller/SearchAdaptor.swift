@@ -59,6 +59,7 @@ class SearchAdaptor : NSObject {
 }
 
 extension SearchAdaptor : UISearchBarDelegate {
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

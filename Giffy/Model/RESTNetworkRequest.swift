@@ -32,8 +32,8 @@ class RESTNetworkRequest {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                self.processError(error as NSError?)
-                completion(CompletionData.error(error! as NSError))
+                self.processError(error)
+                completion(CompletionData.error(error!))
                 return
             }
             completion(CompletionData.success(data))
@@ -59,7 +59,7 @@ class RESTNetworkRequest {
         return string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
     
-    private func processError(_ error : NSError?) {
+    private func processError(_ error : Error?) {
         if let error = error {
             // generic error handling maybe for logging.
             print("network response error \(error)")
