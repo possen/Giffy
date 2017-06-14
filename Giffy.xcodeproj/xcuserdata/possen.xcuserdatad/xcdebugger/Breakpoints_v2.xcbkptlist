@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Giffy/Controller/ViewController.swift"
+            timestampString = "519154587.852803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; () in Giffy.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Giffy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/possen/Projects/Giffy/Giffy/Controller/ViewController.swift"
+                  timestampString = "519109607.338235"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in closure #4 () -&gt; () in Giffy.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Giffy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/possen/Projects/Giffy/Giffy/Controller/ViewController.swift"
+                  timestampString = "519109607.347575"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Giffy.CompletionData&lt;Foundation.Data&gt;) -&gt; () in closure #4 () -&gt; () in Giffy.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Giffy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/possen/Projects/Giffy/Giffy/Controller/ViewController.swift"
+                  timestampString = "519109607.353641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "42">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
