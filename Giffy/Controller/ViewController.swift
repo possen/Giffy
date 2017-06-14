@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         tableViewAdaptorSection = TableViewAdaptorSection<GiffyTableViewCell, GiffyData.Record> (
             cellReuseIdentifier: "GiffyCell",
             sectionTitle: "",
-            height: 30,
+            height: 100,
             items: [],
             select: { (model, index) in
                 self.display(model)

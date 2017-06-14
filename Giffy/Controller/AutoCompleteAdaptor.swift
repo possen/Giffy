@@ -9,12 +9,12 @@
 import UIKit
 
 class AutoCompleteAdaptor : NSObject, UITableViewDelegate, UITableViewDataSource {
-    var tableView : UITableView! = nil
-    var select : ((String) -> Void)? = nil
+    private var tableView : UITableView! = nil
+    private var select : ((String) -> Void)? = nil
     var showControl = false
     
     // auto complete data would actually be held in a model object.
-    let autoCompleteData = [
+    private let autoCompleteData = [
         "about",
         "above",
         "across",
@@ -27,7 +27,7 @@ class AutoCompleteAdaptor : NSObject, UITableViewDelegate, UITableViewDataSource
         "bell",
         "cat"]
     
-    var autoCompleteFiltered : [String]
+    private var autoCompleteFiltered : [String]
     
     init(tableView: UITableView, select: @escaping (String) -> Void) {
         autoCompleteFiltered = autoCompleteData

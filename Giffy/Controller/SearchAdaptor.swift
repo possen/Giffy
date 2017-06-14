@@ -26,20 +26,29 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
                                 height: parentView.frame.size.height)
         
         autoCompleteTableView = UITableView(frame: tableFrame, style:.plain)
+        autoCompleteTableView.isScrollEnabled = true
+        autoCompleteTableView.alpha = 0.8
         
         autoCompleteAdaptor = AutoCompleteAdaptor(tableView: autoCompleteTableView) { text in
             self.queryChanged(searchBar: searchView, searchText: text)
         }
         
-        autoCompleteTableView.isScrollEnabled = true
-        autoCompleteTableView.isHidden = true
-        autoCompleteTableView.alpha = 0.8
+        autoCompleteAdaptor.showControl = false
+        autoCompleteAdaptor.update()
+        
         searchView.delegate = self
         parentView.addSubview(autoCompleteTableView)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        self.completion?()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        autoCompleteAdaptor.showControl = false
+        autoCompleteAdaptor.update()
         self.completion?()
     }
     

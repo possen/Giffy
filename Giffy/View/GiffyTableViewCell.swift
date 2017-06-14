@@ -16,6 +16,7 @@ class GiffyTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         imageView?.contentMode = .scaleAspectFill
+        textLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
     }
     
     override init(style: UITableViewCellStyle,  reuseIdentifier: String?) {
@@ -44,7 +45,7 @@ class GiffyTableViewCell: UITableViewCell {
     }
     
     fileprivate func setupTitle(_ viewData: GiffyTableViewCell.ViewData) {
-        let title = viewData.title.trimmingCharacters(in: .whitespaces)
+        let title = viewData.title
         var parts = title.split(separator: "-")
         parts.removeLast()
         let cleanTitle = String(parts.joined(separator: " "))
