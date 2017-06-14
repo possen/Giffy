@@ -33,22 +33,23 @@ class SearchAdaptor : NSObject, UISearchBarDelegate {
             self.queryChanged(searchBar: searchView, searchText: text)
         }
         
-        autoCompleteAdaptor.showControl = false
-        autoCompleteAdaptor.update()
+        dismissMenu()
         
         searchView.delegate = self
         parentView.addSubview(autoCompleteTableView)
     }
     
+    fileprivate func dismissMenu() {
+        autoCompleteAdaptor.showControl = false
+        autoCompleteAdaptor.update()
+    }
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.completion?()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        autoCompleteAdaptor.showControl = false
-        autoCompleteAdaptor.update()
+        dismissMenu()
         self.completion?()
     }
     
