@@ -4,8 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,13 +30,11 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="243"/>
                                 <color key="backgroundColor" red="0.46666666870000001" green="0.76470589639999997" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="243" id="YZ1-LC-Dnn"/>
-                                    <constraint firstAttribute="width" secondItem="tXf-Iy-dfT" secondAttribute="height" multiplier="15:8" constant="-80.625" id="ipS-oO-aMR"/>
+                                    <constraint firstAttribute="height" constant="243" id="LT3-jW-LN9"/>
                                 </constraints>
                             </webView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bac-lm-zHD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bac-lm-zHD">
                                 <rect key="frame" x="-7" y="300" width="382" height="359"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GiffyCell" id="ss0-6t-0Az" customClass="GiffyTableViewCell" customModule="Giffy" customModuleProvider="target">
@@ -51,12 +50,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.9380337272" green="0.98559801189999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="tXf-Iy-dfT" secondAttribute="height" multiplier="375:128" constant="-336.9140625" id="5rM-bT-PLZ"/>
-                            <constraint firstItem="tXf-Iy-dfT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-156" id="cCJ-x5-yYS"/>
-                            <constraint firstItem="xsA-Bw-opw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lgD-TR-21j"/>
-                            <constraint firstAttribute="trailing" secondItem="xsA-Bw-opw" secondAttribute="trailing" id="uSe-rf-1Em"/>
-                            <constraint firstItem="xsA-Bw-opw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vks-yX-eDK"/>
-                            <constraint firstItem="tXf-Iy-dfT" firstAttribute="centerX" secondItem="xsA-Bw-opw" secondAttribute="centerX" id="wc7-dc-o1E"/>
+                            <constraint firstItem="xsA-Bw-opw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0DN-wc-FcM"/>
+                            <constraint firstItem="bac-lm-zHD" firstAttribute="top" secondItem="tXf-Iy-dfT" secondAttribute="bottom" constant="1" id="20j-0G-tW5"/>
+                            <constraint firstItem="xsA-Bw-opw" firstAttribute="leading" secondItem="tXf-Iy-dfT" secondAttribute="leading" id="BWQ-hc-EeO"/>
+                            <constraint firstItem="bac-lm-zHD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-23" id="D9n-6w-iHI"/>
+                            <constraint firstItem="tXf-Iy-dfT" firstAttribute="top" secondItem="xsA-Bw-opw" secondAttribute="bottom" id="QDN-9w-m09"/>
+                            <constraint firstItem="xsA-Bw-opw" firstAttribute="trailing" secondItem="tXf-Iy-dfT" secondAttribute="trailing" id="b7B-Lw-81c"/>
+                            <constraint firstItem="xsA-Bw-opw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bmz-v3-y3m"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bac-lm-zHD" secondAttribute="bottom" constant="8" symbolic="YES" id="eyy-MR-EC9"/>
+                            <constraint firstAttribute="trailing" secondItem="xsA-Bw-opw" secondAttribute="trailing" id="qzf-x5-NCK"/>
+                            <constraint firstItem="tXf-Iy-dfT" firstAttribute="trailing" secondItem="bac-lm-zHD" secondAttribute="trailing" id="vxL-oA-V49"/>
                         </constraints>
                     </view>
                     <connections>
