@@ -72,7 +72,7 @@ class GiffyTableViewCell: UITableViewCell {
 }
 
 extension GiffyTableViewCell.ViewData {
-    init(model: GiffyData.Record) {
+    init(model: GiffyModel.Record) {
         self.title = model.slug
         self.imageURL = URL(string: model.images.fixed_width_small.url)
     }

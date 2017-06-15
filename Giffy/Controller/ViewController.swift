@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var searchAdaptor : SearchAdaptor? = nil
     let query = Query()
     var tableViewAdaptor : TableViewAdaptor! = nil
-    var tableViewAdaptorSection : TableViewAdaptorSection<GiffyTableViewCell, GiffyData.Record>! = nil
+    var tableViewAdaptorSection : TableViewAdaptorSection<GiffyTableViewCell, GiffyModel.Record>! = nil
     
     // the role of this view controller is largley to tie things together. They should be quite minimal,
     // to avoid mega view controller.
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewAdaptorSection = TableViewAdaptorSection<GiffyTableViewCell, GiffyData.Record> (
+        tableViewAdaptorSection = TableViewAdaptorSection<GiffyTableViewCell, GiffyModel.Record> (
             cellReuseIdentifier: "GiffyCell",
             sectionTitle: "",
             height: 100,
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         }
     }
     
-    fileprivate func display(_ data: GiffyData.Record) {
+    fileprivate func display(_ data: GiffyModel.Record) {
         if let url = URL(string: data.images.original.url) {
             self.webView.loadRequest(URLRequest(url: url))
         }
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     }
     
     fileprivate func processInBackground(_ data: (Data)) {
-        let result = GiffyData.process(data)
+        let result = GiffyModel.process(data)
         DispatchQueue.main.async {
             switch result {
             case .success(let gifData):

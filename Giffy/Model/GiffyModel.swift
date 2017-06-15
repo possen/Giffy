@@ -10,7 +10,7 @@ import Foundation
 
 // Swift 4 decodable is quite nice.
 
-struct GiffyData: Decodable {
+struct GiffyModel: Decodable {
     struct Record: Decodable {
         struct Original : Decodable {
             let frames: String?
@@ -46,10 +46,10 @@ struct GiffyData: Decodable {
     let meta: Meta
     let pagination: Pagination
     
-    static func process(_ data: (Data)) -> CompletionData<GiffyData> {
+    static func process(_ data: (Data)) -> CompletionData<GiffyModel> {
         let decoder = JSONDecoder()
         do {
-            let result = try decoder.decode(GiffyData.self, from: data)
+            let result = try decoder.decode(GiffyModel.self, from: data)
             return CompletionData.success(result)
         } catch let error {
             return CompletionData.error(error)

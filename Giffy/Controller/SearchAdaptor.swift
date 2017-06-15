@@ -66,6 +66,7 @@ extension SearchAdaptor : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissMenu()
+        searchBar.resignFirstResponder()
         self.completion?()
     }
     
