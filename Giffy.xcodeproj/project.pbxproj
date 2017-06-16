@@ -38,6 +38,7 @@
 		D5B742911EEF5F55005BCE79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5B742931EEF5F55005BCE79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5B7429F1EEF604D005BCE79 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		D5D56A4F1EF367E300C9AE76 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,7 @@
 		D5B7427B1EEF5F55005BCE79 = {
 			isa = PBXGroup;
 			children = (
+				D5D56A4F1EF367E300C9AE76 /* README.md */,
 				D5B742861EEF5F55005BCE79 /* Giffy */,
 				D5B742851EEF5F55005BCE79 /* Products */,
 			);

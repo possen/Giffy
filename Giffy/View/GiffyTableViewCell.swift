@@ -26,6 +26,7 @@ class GiffyTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView?.image = UIImage(named: "Placeholder") ?? UIImage()
+        textLabel?.text = ""
     }
     
     override func layoutSubviews() {
@@ -42,6 +43,7 @@ class GiffyTableViewCell: UITableViewCell {
     struct ViewData {
         let title: String
         let imageURL : URL?
+        let index: Int
     }
     
     fileprivate func setupTitle(_ viewData: GiffyTableViewCell.ViewData) {
@@ -54,7 +56,7 @@ class GiffyTableViewCell: UITableViewCell {
     
     fileprivate func setupImageView(_ viewData: GiffyTableViewCell.ViewData) {
         if let imageURL = viewData.imageURL, let imageView = imageView {
-            imageView.loadImageAtURL(imageURL)
+            imageView.loadImageAtURL(imageURL, index: viewData.index)
         } else {
             imageView?.image = UIImage(named: "Placeholder") ?? UIImage()
         }
@@ -72,9 +74,10 @@ class GiffyTableViewCell: UITableViewCell {
 }
 
 extension GiffyTableViewCell.ViewData {
-    init(model: GiffyModel.Record) {
+    init(model: GiffyModel.Record, index: Int) {
         self.title = model.slug
         self.imageURL = URL(string: model.images.fixed_width_small.url)
+        self.index = index
     }
 }
 

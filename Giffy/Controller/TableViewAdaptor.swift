@@ -14,6 +14,7 @@ protocol TableSectionAdaptor {
     var title: String { get }
     var height : CGFloat { get }
     var itemCount : Int { get }
+    var pageSize: Int { get }
     func select(index: Int)
     func configure(cell: UITableViewCell, index: Int)
 }
@@ -22,36 +23,47 @@ class TableViewAdaptorSection<Cell, Model> : TableSectionAdaptor {
     internal let cellReuseIdentifier: String
     internal let title: String
     internal let height: CGFloat
-    internal var items: [Model]
+    internal let pageSize: Int
+    internal var items: [Int: Model] // sparse array
     
     init(cellReuseIdentifier : String,
          sectionTitle: String,
          height: CGFloat,
-         items: [Model],
-         select: @escaping ( Model, Int ) -> Void,
-         configure: @escaping (Cell, Model) -> Void) {
+         items: [Int: Model],
+         pageSize: Int, 
+         select: @escaping ( Model?, Int) -> Void,
+         pageFault: @escaping ( Int ) -> Void,
+         configure: @escaping (Cell, Model?, Int) -> Void) {
         self.cellReuseIdentifier = cellReuseIdentifier
         self.title = sectionTitle
         self.height = height
         self.items = items
+        self.pageSize = pageSize
         self.configure = configure
         self.select = select
+        self.pageFault = pageFault
     }
     
-    internal var itemCount: Int {
-        return items.count
-    }
+    internal var itemCount: Int = 0
     
     internal func select(index: Int) {
-        select( items[index], index)
+        select(items[index], index)
     }
     
     internal func configure(cell: UITableViewCell, index: Int) {
-        configure(cell as! Cell, items[index]) // if this fails check IB cell is correct type, or reuse identifier is registeed.
+        configure(cell as! Cell, items[index], index ) // if this fails check IB cell is correct type, or reuse identifier is registered.
+        internalPageFault(offset: index)
     }
     
-    var configure: ( Cell, Model ) -> Void
-    var select: ( Model, Int ) -> Void
+    internal func internalPageFault(offset: Int) {
+        if offset % pageSize == 0, items[offset] == nil {
+            self.pageFault(offset)
+        }
+    }
+    
+    var configure: ( Cell, Model?, Int ) -> Void
+    var select: ( Model?, Int ) -> Void
+    var pageFault: ( Int ) -> Void
 }
 
 
