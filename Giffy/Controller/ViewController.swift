@@ -132,6 +132,7 @@ class ViewController: UIViewController {
             alert.dismiss(animated: true, completion: {})
         })
         alert.addAction(okAction)
+        alert.popoverPresentationController?.sourceView = search
         self.present(alert, animated: true, completion: {})
     }
 }

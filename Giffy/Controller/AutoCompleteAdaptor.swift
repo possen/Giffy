@@ -12,26 +12,23 @@ class AutoCompleteAdaptor : NSObject {
     private var tableView : UITableView! = nil
     private var select : ((String) -> Void)? = nil
     var showControl = false
-    
-    // auto complete data would actually be held in a model object.
-    private let autoCompleteData = [
-        "about",
-        "above",
-        "across",
-        "app",
-        "apple",
-        "appreciate",
-        "bad",
-        "ball",
-        "balloon",
-        "bell",
-        "cat"]
+    private var autoCompleteModel: AutoComplete? = nil
     
     private var autoCompleteFiltered : [String]
     
     init(tableView: UITableView, select: @escaping (String) -> Void) {
-        autoCompleteFiltered = autoCompleteData
+        autoCompleteFiltered = []
         super.init()
+        
+        DispatchQueue.global(qos: .utility).async {
+            do {
+                self.autoCompleteModel = try AutoComplete()
+                print("AutoComplete data load ready")
+            } catch {
+                print("AutoComplete data load failed")
+                self.autoCompleteModel = nil
+            }
+        }
         
         self.select = select
         self.tableView = tableView
@@ -42,9 +39,8 @@ class AutoCompleteAdaptor : NSObject {
     }
     
     func changed(text: String) {
-        autoCompleteFiltered = autoCompleteData.filter({ (item) -> Bool in
-            return item.hasPrefix(text.lowercased())
-        })
+        let query = text.lowercased()
+        autoCompleteFiltered = autoCompleteModel?.findValues(forTerm: query) ?? []
         
         DispatchQueue.main.async {
             let count = self.autoCompleteFiltered.count
