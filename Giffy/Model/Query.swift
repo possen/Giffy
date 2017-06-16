@@ -10,7 +10,9 @@ import Foundation
 
 class Query {
     func query(query: String, offset: Int, limit: Int) -> RESTNetworkRequest {
-        let parameters =   ["q" : query,
+        let terms = query.replacingOccurrences(of: " ", with: "+")
+        
+        let parameters =   ["q" : terms,
                             "api_key" : "dc6zaTOxFJmzC",
                             "limit": "\(limit)",
                             "offset": "\(offset)"]
