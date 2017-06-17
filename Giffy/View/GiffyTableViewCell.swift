@@ -51,7 +51,7 @@ class GiffyTableViewCell: UITableViewCell {
         var parts = title.split(separator: "-")
         if parts.count > 0 {
             parts.removeLast()
-        }x
+        }
         let cleanTitle = String(parts.joined(separator: " "))
         textLabel!.text = cleanTitle.count == 0 ? "no title" : cleanTitle
     }
