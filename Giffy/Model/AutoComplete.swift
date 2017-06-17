@@ -22,7 +22,7 @@ class AutoComplete {
     }
     
     func reset() throws {
-        try Trie.erase(path: AutoComplete.path)
+        try Trie.remove(path: AutoComplete.path)
     }
     
     func findValues(forTerm string : String) -> [String] {

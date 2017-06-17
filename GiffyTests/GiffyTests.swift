@@ -39,7 +39,7 @@ class GiffyTests: XCTestCase {
     
     func testReset() {
         do {
-            try Trie.erase(path: testPath)
+            try Trie.remove(path: testPath)
         } catch {
             XCTFail()
         }

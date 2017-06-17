@@ -15,10 +15,10 @@ class Trie : Encodable, Decodable  {
     }
     
     var children: [String: Trie] = [:] // can't encode decode characters
-    let leaf: Bool
+    let isLeaf: Bool
     
-    init(leaf: Bool) {
-        self.leaf = leaf
+    init(isLeaf: Bool) {
+        self.isLeaf = isLeaf
     }
     
     /// returns results in sorted order
@@ -31,8 +31,16 @@ class Trie : Encodable, Decodable  {
         return results
     }
     
+    static func constructTrie(size: Int = Int.max) throws -> Trie {
+        // just read the first N words from dictionary.
+        let file = try String(contentsOfFile: "/usr/share/dict/words", encoding: .utf8)
+        let split = file.split(separator: "\n")
+        let words = size == Int.max ? split[0..<split.count] : split[0..<size]
+        return Trie.addWords(words)
+    }
+    
     static func addWords(_ words : ArraySlice<String.SubSequence>) -> Trie {
-        let root =  Trie(leaf: false)
+        let root =  Trie(isLeaf: false)
         for word in words {
             print(word)
             root.addRemaining(word.lowercased())
@@ -40,12 +48,17 @@ class Trie : Encodable, Decodable  {
         return root
     }
     
-    static func constructTrie(size: Int = Int.max) throws -> Trie {
-        // just read the first N words from dictionary.
-        let file = try String(contentsOfFile: "/usr/share/dict/words", encoding: .utf8)
-        let split = file.split(separator: "\n")
-        let words = size == Int.max ? split[0..<split.count] : split[0..<size]
-        return Trie.addWords(words)
+    private func addRemaining(_ word : String) {
+        var word = word
+        let char = String(word.removeFirst())
+        var child = children[char]
+        if child == nil {
+            child = Trie(isLeaf: word.isEmpty)
+            children[char] = child
+        }
+        if !word.isEmpty {
+            child!.addRemaining(word)
+        }
     }
     
     func save(path: String) throws {
@@ -65,27 +78,14 @@ class Trie : Encodable, Decodable  {
         }
     }
     
-    static func erase(path: String) throws {
+    static func remove(path: String) throws {
         try FileManager.default.removeItem(atPath: path)
-    }
-    
-    private func addRemaining(_ word : String) {
-        var word = word
-        let char = String(word.remove(at: word.startIndex))
-        var child = children[char]
-        if child == nil {
-            child = Trie(leaf: word.isEmpty)
-            children[char] = child
-        }
-        if !word.isEmpty {
-            child!.addRemaining(word)
-        }
     }
     
     private func findBase(_ word  : String) -> Trie? {
         var word = word
         if !word.isEmpty {
-            let char = String(word.remove(at: word.startIndex))
+            let char = String(word.removeFirst())
             if let trie = children[char] {
                 return trie.findBase(word)
             } else {
@@ -97,7 +97,7 @@ class Trie : Encodable, Decodable  {
     
     private func compileResults(fromBase baseString: String,
                                     path : String, results : inout [String])  {
-        if leaf {
+        if isLeaf {
             results.append("\(baseString)\(path)")
         }
         
