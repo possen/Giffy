@@ -8,21 +8,24 @@
 
 import Foundation
 
+
 class AutoComplete {
-    static let path = "/tmp/trieDict"
+    static let storedTriePath = "/tmp/trieDict"
+    static let dictonaryWordsPath = "/usr/share/dict/words"
+    
     let trie : Trie
     
     init() throws {
         do {
-            self.trie = try Trie.load(path: AutoComplete.path)
+            self.trie = try Trie(storedDataPath: AutoComplete.storedTriePath)
         } catch  {
-            trie = try Trie.constructTrie()
-            try trie.save(path: AutoComplete.path)
+            trie = try Trie(dictonaryWordsPath: AutoComplete.dictonaryWordsPath)
+            try trie.save(path: AutoComplete.storedTriePath)
         }
     }
     
     func reset() throws {
-        try Trie.remove(path: AutoComplete.path)
+        try Trie.remove(path: AutoComplete.storedTriePath)
     }
     
     func findValues(forTerm string : String) -> [String] {

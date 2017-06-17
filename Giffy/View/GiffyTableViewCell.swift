@@ -49,7 +49,9 @@ class GiffyTableViewCell: UITableViewCell {
     fileprivate func setupTitle(_ viewData: GiffyTableViewCell.ViewData) {
         let title = viewData.title
         var parts = title.split(separator: "-")
-        parts.removeLast()
+        if parts.count > 0 {
+            parts.removeLast()
+        }x
         let cleanTitle = String(parts.joined(separator: " "))
         textLabel!.text = cleanTitle.count == 0 ? "no title" : cleanTitle
     }

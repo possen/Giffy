@@ -25,9 +25,11 @@ class GiffyTests: XCTestCase {
     
     func testCreateSaveLoadTrie() {
         do {
-            let trie = try Trie.constructTrie(size: 100)
+            let dictonaryWordsPath = "/usr/share/dict/words"
+            
+            let trie = try Trie(dictonaryWordsPath: dictonaryWordsPath, size: 100)
             try trie.save(path: testPath)
-            let newTrie = try Trie.load(path: testPath)
+            let newTrie = try Trie(storedDataPath: testPath)
             print(newTrie)
             let vals = newTrie.findValues(forTerm: "ab")
             XCTAssertEqual(["ab", "aba", "ababdeh", "ababua", "abac", "abaca", "abacate", "abacay", "abacinate", "abacination", "abaciscus", "abacist", "aback", "abactinal", "abactinally", "abaction", "abactor", "abaculus", "abacus", "abadite", "abaff", "abaft", "abaisance", "abaiser", "abaissed", "abalienate", "abalienation", "abalone", "abama", "abampere", "abandon", "abandonable", "abandoned", "abandonedly", "abandonee", "abandoner", "abandonment", "abanic", "abantes", "abaptiston", "abarambo", "abaris", "abarthrosis", "abarticular", "abarticulation", "abas", "abase", "abased", "abasedly", "abasedness", "abasement", "abaser", "abasgi", "abash", "abashed", "abashedly", "abashedness", "abashless", "abashlessly", "abashment", "abasia", "abasic", "abask", "abassin", "abastardize", "abatable", "abate", "abatement", "abater", "abatis", "abatised", "abaton", "abator", "abattoir", "abatua", "abature", "abave", "abaxial", "abaxile", "abaze", "abb", "abba", "abbacomes", "abbacy", "abbadide"], vals)
