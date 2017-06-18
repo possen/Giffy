@@ -24,7 +24,7 @@ class Trie {
         root = try Trie.load(path: storedDataPath)
     }
     
-    fileprivate class Node: Encodable, Decodable  {
+    fileprivate class Node: Encodable, Decodable {
         var children: [String: Node] = [:] // can't encode decode characters
         let isLeaf: Bool
         
@@ -58,7 +58,7 @@ class Trie {
         }
         
         func compileResults(fromBase baseString: String,
-                                    path : String, results : inout [String])  {
+                                    path : String, results : inout [String]) {
             if isLeaf {
                 results.append("\(baseString)\(path)")
             }

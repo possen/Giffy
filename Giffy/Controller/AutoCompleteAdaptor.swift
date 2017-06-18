@@ -69,6 +69,7 @@ extension AutoCompleteAdaptor : UITableViewDelegate {
 }
 
 extension AutoCompleteAdaptor : UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

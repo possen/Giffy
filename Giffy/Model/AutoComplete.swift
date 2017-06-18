@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class AutoComplete {
     static let storedTriePath = "/tmp/trieDict"
     static let dictonaryWordsPath = "/usr/share/dict/words"
