@@ -13,7 +13,6 @@ class AutoCompleteAdaptor : NSObject {
     private var select : ((String) -> Void)? = nil
     var showControl = false
     private var autoCompleteModel: AutoComplete? = nil
-    
     private var autoCompleteFiltered : [String]
     
     init(tableView: UITableView, select: @escaping (String) -> Void) {
