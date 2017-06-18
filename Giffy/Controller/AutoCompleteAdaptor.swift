@@ -59,6 +59,7 @@ class AutoCompleteAdaptor : NSObject {
 }
 
 extension AutoCompleteAdaptor : UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         select?(autoCompleteFiltered[indexPath.row])
         showControl = false
