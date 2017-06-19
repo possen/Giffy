@@ -11,10 +11,10 @@ import UIKit
 class AutoCompleteAdaptor : NSObject {
     private var tableView : UITableView! = nil
     private var select : ((String) -> Void)? = nil
-    var showControl = false
     private var autoCompleteModel: AutoComplete? = nil
     private var autoCompleteFiltered : [String]
-    
+    var showControl = false
+
     init(tableView: UITableView, select: @escaping (String) -> Void) {
         autoCompleteFiltered = []
         super.init()
