@@ -10,17 +10,10 @@ import Contacts
 
 class GiffyTableViewCell: UITableViewCell {
     
-    var title : String = ""
-    var imageURL : URL? = nil
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         imageView?.contentMode = .scaleAspectFill
         textLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
-    }
-    
-    override init(style: UITableViewCellStyle,  reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
     }
     
     override func prepareForReuse() {
@@ -53,7 +46,7 @@ class GiffyTableViewCell: UITableViewCell {
             parts.removeLast()
         }
         let cleanTitle = String(parts.joined(separator: " "))
-        textLabel!.text = cleanTitle.count == 0 ? "no title" : cleanTitle
+        textLabel?.text = cleanTitle.count == 0 ? "no title" : cleanTitle
     }
     
     fileprivate func setupImageView(_ viewData: GiffyTableViewCell.ViewData) {

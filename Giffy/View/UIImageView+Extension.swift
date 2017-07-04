@@ -1,6 +1,5 @@
 //
 //  ImageView+Extension.swift
-//  Dining
 //
 //  Created by Paul Ossenbruggen on 2/25/17.
 //
